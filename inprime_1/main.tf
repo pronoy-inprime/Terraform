@@ -4,6 +4,7 @@ module "vpc" {
     public_subnet_01_vpc01 = var.public_subnet_01_vpc01
     public_subnet_02_vpc01 = var.public_subnet_02_vpc01
     private_subnet_01_vpc01 = var.private_subnet_01_vpc01
+    private_subnet_02_vpc01 = var.private_subnet_02_vpc01
 }
 
 module "sg" {
