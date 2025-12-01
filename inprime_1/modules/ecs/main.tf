@@ -73,7 +73,7 @@ resource "aws_ecs_service" "nginx_fargate_svc" {
   platform_version = "LATEST"
 
   network_configuration {
-    subnets          = [var.private_subnet_01_vpc01_id]
+    subnets          = [var.private_subnet_01_vpc01_id, var.private_subnet_02_vpc01_id]
     security_groups  = [var.sg_01_id]
     assign_public_ip = false
   }

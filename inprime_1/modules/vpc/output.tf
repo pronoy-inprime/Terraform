@@ -10,3 +10,6 @@ output "public_subnet_01_vpc01_id" {
 output "public_subnet_02_vpc01_id" {
     value = aws_subnet.public_subnet_02_vpc01.id
 }
+output "private_subnet_02_vpc01_id" {
+    value = aws_subnet.private_subnet_02_vpc01.id
+}

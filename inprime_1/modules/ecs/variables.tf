@@ -3,6 +3,11 @@ variable "private_subnet_01_vpc01_id" {
     type = string  
 }
 
+variable "private_subnet_02_vpc01_id" {
+    description =  "VPC Private Subnet 02 Cidr ID"
+    type = string  
+}
+
 variable "tgt_grp_ecs_cluster_arn" {   
     description = "ARN of the target group"
     type = string
