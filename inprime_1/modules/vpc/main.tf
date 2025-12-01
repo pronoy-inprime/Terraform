@@ -11,7 +11,7 @@ resource "aws_vpc" "vpc_inprime_01" {
 resource "aws_subnet" "public_subnet_01_vpc01" {
   vpc_id     = aws_vpc.vpc_inprime_01.id
   cidr_block = var.public_subnet_01_vpc01
-  availability_zone = "us-east-1a"
+  availability_zone = "ap-south-2a"
   map_public_ip_on_launch = true
 
   tags = {
@@ -22,7 +22,7 @@ resource "aws_subnet" "public_subnet_01_vpc01" {
 resource "aws_subnet" "public_subnet_02_vpc01" {
   vpc_id     = aws_vpc.vpc_inprime_01.id
   cidr_block = var.public_subnet_02_vpc01
-  availability_zone = "us-east-1b"
+  availability_zone = "ap-south-2b"
   map_public_ip_on_launch = true
 
   tags = {
@@ -33,9 +33,19 @@ resource "aws_subnet" "public_subnet_02_vpc01" {
 resource "aws_subnet" "private_subnet_01_vpc01" {
   vpc_id     = aws_vpc.vpc_inprime_01.id
   cidr_block = var.private_subnet_01_vpc01
+  availability_zone = "ap-south-2a"
 
   tags = {
     Name = "private_subnet_01_vpc01"
+  }
+}
+resource "aws_subnet" "private_subnet_02_vpc01" {
+  vpc_id     = aws_vpc.vpc_inprime_01.id
+  cidr_block = var.private_subnet_02_vpc01
+  availability_zone = "ap-south-2b"
+
+  tags = {
+    Name = "private_subnet_02_vpc01"
   }
 }
 #internet gateway
@@ -83,6 +93,11 @@ resource "aws_route_table_association" "rt_association_02" {
 resource "aws_route_table_association" "rt_association_03" {
   subnet_id = aws_subnet.public_subnet_02_vpc01.id
   route_table_id = aws_route_table.public_rt_vpc01.id
+}
+
+resource "aws_route_table_association" "rt_association_04" {
+  subnet_id      = aws_subnet.private_subnet_02_vpc01.id
+  route_table_id = aws_route_table.private_rt_vpc01.id
 }
 
 resource "aws_eip" "nat_eip" {
